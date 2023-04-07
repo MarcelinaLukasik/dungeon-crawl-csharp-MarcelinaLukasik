@@ -19,7 +19,6 @@ namespace DungeonCrawl.Actors.Characters
             Health -= damage;
             if (Health <= 0)
             {
-                // Die
                 OnDeath();
                 ActorManager.Singleton.DestroyActor(this);
             }
@@ -48,24 +47,18 @@ namespace DungeonCrawl.Actors.Characters
 
             if (ActorAtTargetPosition == null)
             {
-                // No obstacle found, just move
                 Position = TargetPosition;
             }
             else
             {
                 if (!ActorAtTargetPosition.OnCollision(this))
                 {
-                    // Allowed to move
                     Position = TargetPosition;
                 }
             }
         }
 
         protected abstract void OnDeath();
-
-        /// <summary>
-        ///     All characters are drawn "above" floor etc
-        /// </summary>
         public override int Z => -1;
     }
 }
