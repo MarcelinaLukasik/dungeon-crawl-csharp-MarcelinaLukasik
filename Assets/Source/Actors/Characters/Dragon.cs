@@ -44,7 +44,6 @@ namespace DungeonCrawl.Actors.Characters
                 
                 if (ActorAtTargetPosition == null)
                 {
-                    // No obstacle found, just move
                     Position = TargetPosition;
                 }
                 else if (ActorAtTargetPosition.GetType() == typeof(Player))
@@ -56,7 +55,6 @@ namespace DungeonCrawl.Actors.Characters
                 {
                     if (!ActorAtTargetPosition.OnCollision(this))
                     {
-                        // Allowed to move
                         Position = TargetPosition;
                     }
                 }
