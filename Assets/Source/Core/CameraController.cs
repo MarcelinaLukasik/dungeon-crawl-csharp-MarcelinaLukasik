@@ -3,21 +3,10 @@ using UnityEngine;
 
 namespace DungeonCrawl.Core
 {
-    /// <summary>
-    ///     Class used for manipulating camera's position
-    /// </summary>
     public class CameraController : MonoBehaviour
     {
-        /// <summary>
-        ///     CameraController singleton
-        /// </summary>
         public static CameraController Singleton { get; private set; }
-
         private bool _closeView;
-
-        /// <summary>
-        ///     Camera's current position
-        /// </summary>
         public (float x, float y) Position
         {
             get => _position;
@@ -29,11 +18,6 @@ namespace DungeonCrawl.Core
         }
 
         public (float x, float y) StartingPosition;
- 
-
-        /// <summary>
-        ///     Camera's size (how much space can it see)
-        /// </summary>
         public float Size
         {
             get => _camera.orthographicSize;
@@ -57,9 +41,5 @@ namespace DungeonCrawl.Core
 
         }
 
-        private void Update()
-        {
-
-        }
     }
 }
