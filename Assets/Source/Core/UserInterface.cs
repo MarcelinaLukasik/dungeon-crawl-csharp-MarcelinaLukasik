@@ -4,9 +4,6 @@ using UnityEngine;
 
 namespace Assets.Source.Core
 {
-    /// <summary>
-    ///     Class for handling text on user interface (UI)
-    /// </summary>
     public class UserInterface : MonoBehaviour
     {
         public enum TextPosition : byte
@@ -22,9 +19,6 @@ namespace Assets.Source.Core
             BottomRight
         }
 
-        /// <summary>
-        ///     User Interface singleton
-        /// </summary>
         public static UserInterface Singleton { get; private set; }
 
         private TextMeshProUGUI[] _textComponents;
@@ -42,11 +36,6 @@ namespace Assets.Source.Core
             _textComponents = GetComponentsInChildren<TextMeshProUGUI>();
         }
 
-        /// <summary>
-        ///     Changes text at given screen position
-        /// </summary>
-        /// <param name="text"></param>
-        /// <param name="textPosition"></param>
         public void SetText(string text, TextPosition textPosition)
         {
             _textComponents[(int) textPosition].text = text;
