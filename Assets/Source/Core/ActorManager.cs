@@ -69,7 +69,6 @@ namespace DungeonCrawl.Core
             if (spriteName == "default")
                 return _spriteAtlas.GetSprite($"{assetName}_{id}");
             return _spriteAtlas.GetSprite($"{assetName} {spriteName}");
-            // return _spriteAtlas.GetSprite($"TX Props Wooden Gate");
         }
 
         public T Spawn<T>((float x, float y) position, string actorName = null) where T : Actor
