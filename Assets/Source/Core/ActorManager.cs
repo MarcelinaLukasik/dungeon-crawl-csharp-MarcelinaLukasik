@@ -9,14 +9,9 @@ using Random = System.Random;
 
 namespace DungeonCrawl.Core
 {
-    /// <summary>
-    ///     Main class for Actor management - spawning, destroying, detecting at positions, etc
-    /// </summary>
+
     public class ActorManager : MonoBehaviour
     {
-        /// <summary>
-        ///     ActorManager singleton
-        /// </summary>
         public static ActorManager Singleton { get; private set; }
 
         private SpriteAtlas _spriteAtlas;
@@ -36,11 +31,6 @@ namespace DungeonCrawl.Core
             _spriteAtlas = Resources.Load<SpriteAtlas>("Spritesheet");
         }
 
-        /// <summary>
-        ///     Returns actor present at given position (returns null if no actor is present)
-        /// </summary>
-        /// <param name="position"></param>
-        /// <returns></returns>
         public Actor GetActorAt((float x, float y) position)
         {
             return AllActors.FirstOrDefault(actor => actor.Detectable && actor.Position == position);
@@ -50,30 +40,17 @@ namespace DungeonCrawl.Core
             return AllActors.LastOrDefault(actor => actor.Detectable && actor.Position == position);
         }
 
-        /// <summary>
-        ///     Returns actor of specific subclass present at given position (returns null if no actor is present)
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="position"></param>
-        /// <returns></returns>
         public T GetActorAt<T>((float x, float y) position) where T : Actor
         {
             return AllActors.FirstOrDefault(actor => actor.Detectable && actor is T && actor.Position == position) as T;
         }
 
-        /// <summary>
-        ///     Unregisters given actor (use when killing/destroying)
-        /// </summary>
-        /// <param name="actor"></param>
         public void DestroyActor(Actor actor)
         {
             AllActors.Remove(actor);
             Destroy(actor.gameObject);
         }
 
-        /// <summary>
-        ///     Used for cleaning up the scene before loading a new map
-        /// </summary>
         public void DestroyAllActors()
         {
             var actors = AllActors.ToArray();
@@ -87,11 +64,6 @@ namespace DungeonCrawl.Core
                 
         }
 
-        /// <summary>
-        ///     Returns sprite with given ID
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         public Sprite GetSprite(string assetName, int id, string spriteName = "default")
         {
             if (spriteName == "default")
@@ -100,13 +72,6 @@ namespace DungeonCrawl.Core
             // return _spriteAtlas.GetSprite($"TX Props Wooden Gate");
         }
 
-        /// <summary>
-        ///     Spawns given Actor type at given position
-        /// </summary>
-        /// <typeparam name="T">Actor type</typeparam>
-        /// <param name="position">Position</param>
-        /// <param name="actorName">Actor's name (optional)</param>
-        /// <returns></returns>
         public T Spawn<T>((float x, float y) position, string actorName = null) where T : Actor
         {
             return Spawn<T>(position.x, position.y, actorName);
@@ -117,14 +82,6 @@ namespace DungeonCrawl.Core
             return Spawn<T>(position.x, position.y, rotation, actorName);
         }
 
-        /// <summary>
-        ///     Spawns given Actor type at given position
-        /// </summary>
-        /// <typeparam name="T">Actor type</typeparam>
-        /// <param name="x">X coordinate</param>
-        /// <param name="y">Y coordinate</param>
-        /// <param name="actorName">Actor's name (optional)</param>
-        /// <returns></returns>
         public T Spawn<T>(float x, float y, string actorName = null) where T : Actor
         {
             var go = new GameObject();
