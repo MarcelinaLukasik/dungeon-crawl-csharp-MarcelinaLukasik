@@ -9,14 +9,12 @@ namespace DungeonCrawl.Actors.Static
         public override string DefaultName => "Floor";
         public override bool Detectable => false;
         public override int Z => 1;
-
         private string _spriteName;
 
         protected override void OnAwake()
         {
             if (MapId == 1)
-            {
-                
+            {                
                 _spriteName = "Ground_9";
                 SpriteRend = GetComponent<SpriteRenderer>();
                 SetSprite(assetName, DefaultSpriteId, _spriteName);
