@@ -7,15 +7,8 @@ using UnityEngine;
 
 namespace DungeonCrawl.Core
 {
-    /// <summary>
-    ///     MapLoader is used for constructing maps from txt files
-    /// </summary>
     public static class MapLoader
     {
-        /// <summary>
-        ///     Constructs map from txt file and spawns actors at appropriate positions
-        /// </summary>
-        /// <param name="id"></param>
         public static void LoadMap(int id)
         {
             var lines = Regex.Split(Resources.Load<TextAsset>($"map_{id}").text, "\r\n|\r|\n");
