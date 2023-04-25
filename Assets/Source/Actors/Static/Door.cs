@@ -1,11 +1,5 @@
-﻿using DungeonCrawl.Actors.Static.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DungeonCrawl.Actors.Characters;
-using UnityEngine;
+﻿using DungeonCrawl.Actors.Characters;
+
 
 namespace DungeonCrawl.Actors.Static
 {

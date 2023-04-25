@@ -19,7 +19,7 @@ namespace DungeonCrawl.Actors.Characters
         private bool _destroyed;
         private float _speed;
         private int _frameRate;
-        private (float x, float y) _crownPosition;
+   
         public new bool Detectable { get; private set; }
 
         protected override void OnAwake()
@@ -34,7 +34,6 @@ namespace DungeonCrawl.Actors.Characters
             _wallsToDestroy.Add(new Tuple<float, float>(19, -9));
             Detectable = true;
             _frameRate = 100;
-            _crownPosition = (4, -10);
         }
 
         protected override void OnDeath()
